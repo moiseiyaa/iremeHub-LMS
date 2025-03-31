@@ -3,23 +3,34 @@ import { assets } from '../../assets/assets'
 import { useNavigate } from 'react-router-dom'
 
 const SearchBar = ({ data }) => {
-
   const navigate = useNavigate()
-
   const [input, setInput] = useState(data ? data : '')
 
   const onSearchHandler = (e) => {
     e.preventDefault()
-
-    navigate('/course-list/' + input)
-
+    if (input.trim()) {
+      navigate('/course-list/' + input.trim())
+    }
   }
 
   return (
-    <form onSubmit={onSearchHandler} className="max-w-xl w-full md:h-14 h-12 flex items-center bg-white border border-gray-500/20 rounded">
-      <img className="md:w-auto w-10 px-3" src={assets.search_icon} alt="search_icon" />
-      <input onChange={e => setInput(e.target.value)} value={input} type="text" className="w-full h-full outline-none text-gray-500/80" placeholder="Search for courses" />
-      <button type='submit' className="bg-blue-600 rounded text-white md:px-10 px-7 md:py-3 py-2 mx-1">Search</button>
+    <form onSubmit={onSearchHandler} className="w-full">
+      <div className="relative flex w-full">
+        <input 
+          type="text"
+          value={input}
+          onChange={e => setInput(e.target.value)}
+          placeholder="Search for courses" 
+          className="w-full px-6 py-3 pr-24 rounded-full border border-gray-200 focus:outline-none focus:border-[#947335] bg-white shadow-[0_10px_50px_-12px_rgba(0,0,0,0.25)] hover:shadow-[0_15px_60px_-12px_rgba(0,0,0,0.3)] transition-shadow duration-300"
+        />
+        <button 
+          type="submit"
+          className="absolute right-0 h-full px-6 text-white font-medium bg-[#947335] rounded-full hover:bg-opacity-90 transition-all flex items-center"
+        >
+          Search
+          <img src={assets.search_icon} alt="search" className="w-4 h-4 ml-2 brightness-0 invert" />
+        </button>
+      </div>
     </form>
   )
 }

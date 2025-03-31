@@ -152,7 +152,7 @@ const Player = ({ }) => {
                       <div className="flex items-center justify-between w-full text-gray-800 text-xs md:text-default">
                         <p>{lecture.lectureTitle}</p>
                         <div className='flex gap-2'>
-                          {lecture.lectureUrl && <p onClick={() => setPlayerData({ ...lecture, chapter: index + 1, lecture: i + 1 })} className='text-blue-500 cursor-pointer'>Watch</p>}
+                          {lecture.lectureUrl && <p onClick={() => setPlayerData({ ...lecture, chapter: index + 1, lecture: i + 1 })} className='text-[#947335] cursor-pointer'>Watch</p>}
                           <p>{humanizeDuration(lecture.lectureDuration * 60 * 1000, { units: ['h', 'm'] })}</p>
                         </div>
                       </div>
@@ -179,7 +179,9 @@ const Player = ({ }) => {
                 <YouTube iframeClassName='w-full aspect-video' videoId={playerData.lectureUrl.split('/').pop()} />
                 <div className='flex justify-between items-center mt-1'>
                   <p className='text-xl '>{playerData.chapter}.{playerData.lecture} {playerData.lectureTitle}</p>
-                  <button onClick={() => markLectureAsCompleted(playerData.lectureId)} className='text-blue-600'>{progressData && progressData.lectureCompleted.includes(playerData.lectureId) ? 'Completed' : 'Mark Complete'}</button>
+                  <button onClick={() => markLectureAsCompleted(playerData.lectureId)} className='text-[#947335]'>
+                    {progressData && progressData.lectureCompleted.includes(playerData.lectureId) ? 'Completed' : 'Mark Complete'}
+                  </button>
                 </div>
               </div>
             )

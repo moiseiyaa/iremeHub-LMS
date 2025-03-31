@@ -5,16 +5,21 @@ import Companies from '../../components/student/Companies';
 import CoursesSection from '../../components/student/CoursesSection';
 import TestimonialsSection from '../../components/student/TestimonialsSection';
 import CallToAction from '../../components/student/CallToAction';
+import CloudDivider from '../../components/common/CloudDivider';
 
 const Home = () => {
-
   return (
-    <div className="flex flex-col items-center space-y-7 text-center">
+    <div className="flex flex-col items-center text-center">
       <Hero />
       <Companies />
       <CoursesSection />
-      <TestimonialsSection />
-      <CallToAction />
+      <div className="w-full">
+        <CloudDivider topColor="white" bottomColor="#f8f9fa" upsideDown={false} />
+        <TestimonialsSection />
+      </div>
+      <div className="mt-24">
+        <CallToAction />
+      </div>
       <Footer />
     </div>
   );
